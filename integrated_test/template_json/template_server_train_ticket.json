@@ -69,7 +69,7 @@
                     },
                     {
                       "name": "SAVE_CHECKPOINT_STEPS",
-                      "value": "200"
+                      "value": "100"
                     },
                     {
                       "name": "SPARSE_ESTIMATOR",

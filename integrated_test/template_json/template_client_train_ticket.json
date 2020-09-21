@@ -75,7 +75,7 @@
                     },
                     {
                       "name": "SAVE_CHECKPOINT_STEPS",
-                      "value": "200"
+                      "value": "100"
                     }
                   ],
                   "image": "artifact.bytedance.com/fedlearner/fedlearner:",

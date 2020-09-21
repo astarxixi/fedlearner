@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import json
 import getpass
 import requests
@@ -8,7 +9,7 @@ def login(url):
     while True:
         username = input("Enter your webconsole username: ")
         password = getpass.getpass("Password: ")
-        login_res = requests.post(url + '/api/v1/login',
+        login_res = requests.post(url + '/login',
                                   data={'username': username,
                                         'password': password})
         del password
@@ -16,7 +17,7 @@ def login(url):
         if 'error' not in res_json.keys():
             return login_res.cookies
         else:
-            print('Error: ' + res_json['error'])
+            print("Error: " + res_json["error"])
 
 
 def request_and_response(url, json_data, cookies):
@@ -104,30 +105,33 @@ def build_train_ticket(suffix, fed_id, sdk):
 # https://fl.bytedance.net/
 # http://127.0.0.1:1989/
 
-suffix = input("Enter a unique suffix for this test. Time stamp is recommended.\n"
-               "This suffix should be passed to Bytedance for later settings: ")
-sdk_version = input("Enter the version of the image to be used (7-digit hash code): ")
-url = input("Enter the URL of your webconsole: ").rstrip().rstrip('/')
-cookie = login(url)
+if __name__ == '__main__':
+    suffix = input("Enter a unique suffix for this test. Time stamp is recommended.\n"
+                   "This suffix should be passed to Bytedance for later settings: ")
+    sdk_version = input("Enter the version of the image to be used (7-digit hash code), "
+                        "should be released later than Sep 21: ")
+    url = input("Enter the URL of your webconsole: ").rstrip().rstrip('/') + '/api/v1'
+    cookie = login(url)
 
-federation_json = build_federation_json(suffix)
-federation_id, federation_name = request_and_response(url=url + '/api/v1/federations',
-                                                      json_data=federation_json,
-                                                      cookies=cookie)
-
-raw_data_json = build_raw_data(suffix, federation_id, sdk_version)
-raw_data_id, raw_data_name = request_and_response(url=url + '/api/v1/raw_data',
-                                                  json_data=raw_data_json,
-                                                  cookies=cookie)
-
-join_ticket_json = build_data_join_ticket(suffix, federation_id, sdk_version, raw_data_name)
-join_ticket_id, join_ticket_name = request_and_response(url=url + '/api/v1/tickets',
-                                                        json_data=join_ticket_json,
-                                                        cookies=cookie)
-
-train_ticket_json = build_train_ticket(suffix, federation_id, sdk_version)
-train_ticket_id, train_ticket_name = request_and_response(url=url + '/api/v1/tickets',
-                                                          json_data=train_ticket_json,
+    federation_json = build_federation_json(suffix)
+    federation_id, federation_name = request_and_response(url=url + '/federations',
+                                                          json_data=federation_json,
                                                           cookies=cookie)
 
-print("Client settings all set. Please wait for Bytedance to pull final jobs.")
+    raw_data_json = build_raw_data(suffix, federation_id, sdk_version)
+    raw_data_id, raw_data_name = request_and_response(url=url + '/raw_data',
+                                                      json_data=raw_data_json,
+                                                      cookies=cookie)
+    requests.post(url=url + '/raw_data/' + str(raw_data_id) + '/submit',
+                  cookies=cookie)
+
+    join_ticket_json = build_data_join_ticket(suffix, federation_id, sdk_version, raw_data_name)
+    join_ticket_id, join_ticket_name = request_and_response(url=url + '/tickets',
+                                                            json_data=join_ticket_json,
+                                                            cookies=cookie)
+
+    train_ticket_json = build_train_ticket(suffix, federation_id, sdk_version)
+    train_ticket_id, train_ticket_name = request_and_response(url=url + '/tickets',
+                                                              json_data=train_ticket_json,
+                                                              cookies=cookie)
+    print("Client settings all set. Please wait for Bytedance to pull final jobs.")

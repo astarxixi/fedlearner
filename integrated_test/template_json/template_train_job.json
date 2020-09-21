@@ -1,0 +1,145 @@
+{
+  "name": "it-train-job-",
+  "job_type": "nn_model",
+  "client_ticket_name": "it-server-train-ticket-",
+  "federation_id": "!federation_id",
+  "server_ticket_name": "it-client-train-ticket-",
+  "client_params": {
+    "spec": {
+      "flReplicaSpecs": {
+        "Master": {
+          "replicas": 1,
+          "template": {
+            "spec": {
+              "containers": [
+                {
+                  "resources": {
+                    "limits": {
+                      "cpu": "2000m",
+                      "memory": "2Gi"
+                    },
+                    "requests": {
+                      "cpu": "2000m",
+                      "memory": "2Gi"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "PS": {
+          "replicas": 1,
+          "template": {
+            "spec": {
+              "containers": [
+                {
+                  "resources": {
+                    "limits": {
+                      "cpu": "2000m",
+                      "memory": "4Gi"
+                    },
+                    "requests": {
+                      "cpu": "2000m",
+                      "memory": "4Gi"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "Worker": {
+          "replicas": 1,
+          "template": {
+            "spec": {
+              "containers": [
+                {
+                  "resources": {
+                    "limits": {
+                      "cpu": "2000m",
+                      "memory": "4Gi"
+                    },
+                    "requests": {
+                      "cpu": "2000m",
+                      "memory": "4Gi"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "server_params": {
+    "spec": {
+      "flReplicaSpecs": {
+        "Master": {
+          "replicas": 1,
+          "template": {
+            "spec": {
+              "containers": [
+                {
+                  "resources": {
+                    "limits": {
+                      "cpu": "2000m",
+                      "memory": "2Gi"
+                    },
+                    "requests": {
+                      "cpu": "1000m",
+                      "memory": "2Gi"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "PS": {
+          "replicas": 1,
+          "template": {
+            "spec": {
+              "containers": [
+                {
+                  "resources": {
+                    "limits": {
+                      "cpu": "2000m",
+                      "memory": "4Gi"
+                    },
+                    "requests": {
+                      "cpu": "1000m",
+                      "memory": "2Gi"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "Worker": {
+          "replicas": 1,
+          "template": {
+            "spec": {
+              "containers": [
+                {
+                  "resources": {
+                    "limits": {
+                      "cpu": "2000m",
+                      "memory": "4Gi"
+                    },
+                    "requests": {
+                      "cpu": "1000m",
+                      "memory": "2Gi"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
