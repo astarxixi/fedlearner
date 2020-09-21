@@ -1,0 +1,101 @@
+{
+  "name": "!name",
+  "job_type": "data_join",
+  "client_ticket_name": "!client_ticket_name",
+  "federation_id": "!federation_id",
+  "server_ticket_name": "!server_ticket_name",
+  "client_params": {
+    "spec": {
+      "flReplicaSpecs": {
+        "Master": {
+          "template": {
+            "spec": {
+              "containers": [
+                {
+                  "resources": {
+                    "limits": {
+                      "cpu": "2000m",
+                      "memory": "2Gi"
+                    },
+                    "requests": {
+                      "cpu": "2000m",
+                      "memory": "2Gi"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "Worker": {
+          "replicas": 4,
+          "template": {
+            "spec": {
+              "containers": [
+                {
+                  "resources": {
+                    "limits": {
+                      "cpu": "2000m",
+                      "memory": "3Gi"
+                    },
+                    "requests": {
+                      "cpu": "2000m",
+                      "memory": "3Gi"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "server_params": {
+    "spec": {
+      "flReplicaSpecs": {
+        "Master": {
+          "template": {
+            "spec": {
+              "containers": [
+                {
+                  "resources": {
+                    "limits": {
+                      "cpu": "2000m",
+                      "memory": "3Gi"
+                    },
+                    "requests": {
+                      "cpu": "2000m",
+                      "memory": "3Gi"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "Worker": {
+          "replicas": 4,
+          "template": {
+            "spec": {
+              "containers": [
+                {
+                  "resources": {
+                    "limits": {
+                      "cpu": "2000m",
+                      "memory": "3Gi"
+                    },
+                    "requests": {
+                      "cpu": "2000m",
+                      "memory": "3Gi"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
