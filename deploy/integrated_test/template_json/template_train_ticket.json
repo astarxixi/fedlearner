@@ -17,10 +17,10 @@
                   "env": [
                     {
                       "name": "DATA_SOURCE",
-                      "value": "it-data-join-job-"
+                      "value": "!DATA_SOURCE"
                     }
                   ],
-                  "image": "artifact.bytedance.com/fedlearner/fedlearner:",
+                  "image": "!image",
                   "ports": [
                     {
                       "containerPort": 50051,
@@ -47,7 +47,7 @@
                       "value": "/etc/token/identity-token"
                     }
                   ],
-                  "image": "artifact.bytedance.com/fedlearner/fedlearner:",
+                  "image": "!image",
                   "ports": [
                     {
                       "containerPort": 50051,
@@ -78,7 +78,7 @@
                       "value": "100"
                     }
                   ],
-                  "image": "artifact.bytedance.com/fedlearner/fedlearner:",
+                  "image": "!image",
                   "ports": [
                     {
                       "containerPort": 50051,

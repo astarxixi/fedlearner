@@ -3,8 +3,8 @@
   "federation_id": "!federation_id",
   "output_partition_num": 4,
   "data_portal_type": "Streaming",
-  "input": "/app/integrated_test/tfrecord_raw_data",
-  "image": "artifact.bytedance.com/fedlearner/fedlearner:",
+  "input": "/app/deploy/integrated_test/tfrecord_raw_data",
+  "image": "!image",
   "context": {
     "file_wildcard": "*.rd",
     "batch_size": 1024,
@@ -29,7 +29,7 @@
                         "memory": "3Gi"
                       }
                     },
-                    "image": "artifact.bytedance.com/fedlearner/fedlearner:",
+                    "image": "!image",
                     "ports": [
                       {
                         "containerPort": 50051,
@@ -61,7 +61,7 @@
                         "memory": "4Gi"
                       }
                     },
-                    "image": "artifact.bytedance.com/fedlearner/fedlearner:",
+                    "image": "!image",
                     "command": [
                       "/app/deploy/scripts/data_portal/run_data_portal_worker.sh"
                     ],

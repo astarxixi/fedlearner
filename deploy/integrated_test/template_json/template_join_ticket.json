@@ -2,7 +2,7 @@
   "name": "!name",
   "federation_id": "!federation_id",
   "job_type": "data_join",
-  "role": "!role",
+  "role": "Leader",
   "sdk_version": "!sdk_version",
   "expire_time": "!expire_time",
   "public_params": {
@@ -41,7 +41,7 @@
                       "value": "portal_publish_dir/"
                     }
                   ],
-                  "image": "artifact.bytedance.com/fedlearner/fedlearner:",
+                  "image": "!image",
                   "ports": [
                     {
                       "containerPort": 50051,
@@ -107,7 +107,7 @@
                       "value": "STREAM_JOINER"
                     }
                   ],
-                  "image": "artifact.bytedance.com/fedlearner/fedlearner:",
+                  "image": "!image",
                   "ports": [
                     {
                       "containerPort": 50051,

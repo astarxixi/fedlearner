@@ -1,6 +1,6 @@
 {
   "name": "!name",
-  "x-federation": "!federation",
+  "x-federation": "!x-federation",
   "trademark": "!trademark",
   "email": "integrated@test.client",
   "tel": "13123456789",
@@ -63,8 +63,8 @@
       "peerURL": "fedlearner-stack-ingress-nginx-controller.default.svc.cluster.local:80",
       "authority": "external.name",
       "extraHeaders": {
-        "x-host": "fedlearner-webconsole.bytedance.com",
-        "x-federation": "it-test2"
+        "x-host": "default.flapp.webconsole",
+        "x-federation": "!x-federation"
       }
     },
     "leader_peer_spec": {
