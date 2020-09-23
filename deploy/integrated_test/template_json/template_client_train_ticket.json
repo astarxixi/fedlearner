@@ -71,11 +71,11 @@
                   "env": [
                     {
                       "name": "CODE_KEY",
-                      "value": "/app/integrated_test/code_key/criteo-train-2.tar.gz"
+                      "value": "/app/deploy/integrated_test/code_key/criteo-train-2.tar.gz"
                     },
                     {
                       "name": "SAVE_CHECKPOINT_STEPS",
-                      "value": "100"
+                      "value": "1000"
                     }
                   ],
                   "image": "!image",
